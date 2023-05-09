@@ -1,2 +1,0 @@
-# japgo.github.io
-* 
