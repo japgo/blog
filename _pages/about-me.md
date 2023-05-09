@@ -6,11 +6,9 @@ author_profile: true
 comments: false
 ---
 ## 이원용 (WONYONG LEE)
-E-MAIL: [japgo@naver.com](mailto:japgo@naver.com)  
+E-MAIL: [japgo756@gamil.com](mailto:japgo756@gmail.com)  
 GitHub: [https://github.com/japgo](https://github.com/japgo)  
-    
-start
-* start
+Blog: [https://japgo.github.io](https://japgo.github.io)
 
 ## Education
 * 배재대학교 \| 2007.03 - 2011.02
