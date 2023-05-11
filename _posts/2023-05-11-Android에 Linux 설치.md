@@ -19,8 +19,18 @@ tags:
 > uname -a
 * 현재 Linux 버전 정보
 
-# 설치
-## Termux
+## 설치
+### Termux
 * Android에서 Linux Terminal 사용 할 수 있는 App.
+
+#### Termux에서 ssh 실행
 * pkg install openssh
 * sshd // ssh 실행
+
+### code-server
+* github : https://github.com/coder/code-server
+* IP 수정
+~/.config/code-server/config.yaml
+bind-addr: 127.0.0.1:8080  // 127.0.0.1을 현재 IP로 변경.
+
+* code-server --auth none // code-server 실행
