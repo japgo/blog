@@ -27,10 +27,15 @@ tags:
 * pkg install openssh
 * sshd // ssh 실행
 
+### ubuntu 실행
+* apt install proot-distro 입력
+* proot-distro install ubuntu 입력
+* proot-distro login ubuntu 입력
+
 ### code-server
 * github : https://github.com/coder/code-server
 * IP 수정
 ~/.config/code-server/config.yaml
 bind-addr: 127.0.0.1:8080  // 127.0.0.1을 현재 IP로 변경.
 
-* code-server --auth none // code-server 실행
+* code-server --auth none & // code-server 백그라운드에서 실행 
