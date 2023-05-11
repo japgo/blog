@@ -22,4 +22,6 @@ tags:
 # 설치
 ## Termux
 * Android에서 Linux Terminal 사용 할 수 있는 App.
+* pkg install openssh
+* sshd // ssh 실행
 
