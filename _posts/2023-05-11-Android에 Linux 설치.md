@@ -11,17 +11,16 @@ tags:
     - Linux
 ---
 
-# Linux 기본 명령어
-###### hostname -I
+## Linux 기본 명령어
+
+> hostname -I
 * 현재 연결된 IP 확인
 
-###### uname -a
+> uname -a
 * 현재 Linux 버전 정보
---------------------------------------
 
 # 설치
 ## Termux
 * Android에서 Linux Terminal 사용 할 수 있는 App.
 * pkg install openssh
 * sshd // ssh 실행
-
