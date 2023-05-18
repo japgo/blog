@@ -19,6 +19,9 @@ tags:
 > uname -a
 * 현재 Linux 버전 정보
 
+> sudo passwd root
+* root 비밀번호 변경
+
 ## 설치
 ### Termux
 * Android에서 Linux Terminal 사용 할 수 있는 App.
