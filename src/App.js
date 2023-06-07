@@ -1,5 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
+import { useState } from 'react';
 
 function App() {
   return (
@@ -24,14 +25,19 @@ function App() {
 }
 
 function MyButton() {
-  function handleClick(){
-    alert( 'Click!!!' );
-  }
-  return (
-    <button>
-      I'm a button.
-    </button>
-  )
+	const [ count, setCount ] = useState( 0 );
+
+	function handleClick() {
+		//alert( 'Click!!!' );
+		setCount( count + 1 );
+	}
+
+	return (
+		< button onClick = { handleClick } >
+			I'm a button.
+			Clicked { count } times
+		</ button >
+	)
 }
 
 export default App;
