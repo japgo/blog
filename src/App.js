@@ -51,8 +51,9 @@ function Main()
 				<h4 className="item">Blog</h4>
 				<h4 className='item'>menu2</h4>
 			</div>
-			<div className='main-page'>
-				<h1>Hello</h1>
+			<div className='main-page'> 
+				<div id='side_left' className='left-menu'> left menu </div>
+				<div className='content'> main content </div>
 			</div>
 		</div>
 	)
