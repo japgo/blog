@@ -1,63 +1,43 @@
-//import logo from './logo.svg';
 import './App.css';
-//import { useState } from 'react';
 
-// function App2() {
-// 	// const img = "https://imgur.com/k0kaIV0";
-	
-// 	return (
-// 		<div className="App">
-// 			<header className="App-header">
-// 				<img src={logo} className="App-logo" alt="logo" />
-// 				<p>
-// 					Edit <code>src/App.js</code> and save to reload. Wow!!!!!!
-// 				</p>
-// 				<MyButton/>
-// 				<a
-// 					className="App-link"
-// 					href="https://reactjs.org"
-// 					target="_blank"
-// 					rel="noopener noreferrer"
-// 				>
-// 					Learn React
-// 				</a>
-// 			</header>
-// 		</div>
-// 	);
-// }
+function Header( props ) {
+	console.log( 'props', props )
+	return (
+		<header>
+			<h1><a href='/'>{props.title}</a></h1>
+		</header>
+	)
+}
 
-// function MyButton() {
-// 	const [ count, setCount ] = useState( 0 );
+function Nav() {
+	return (
+		<nav>
+			<ol>
+				<li><a herf='/read/1'>html</a></li>
+				<li><a herf='/read/2'>css</a></li>
+				<li><a herf='/read/3'>js</a></li>
+			</ol>
+		</nav>
+	)
+}
 
-// 	function handleClick() {
-// 		alert( 'first ' + count );
-// 		setCount( count + 1 );
-// 		alert( 'second ' + count );
-// 	}
-
-// 	return (
-// 		< button onClick = { handleClick } >
-// 			I'm a button.
-// 			Clicked { count } times
-// 		</ button >
-// 	)
-// }
-
+function Article( props ) {
+	return ( 
+		<article>
+			<h2>{props.title}</h2>
+			{props.body}
+		</article>
+	)
+}
 function App()
 {
 	return(
-		<div className="App">
-			<div className="black-nav">
-				<h4 className="item">Blog123</h4>
-				<h4 className='item'>menu12123123</h4>
-			</div>
-			<div className='main-page'> 
-				<div id='side_left' className='left-menu'> left menu </div>
-				<div className='content'> main content </div>
-			</div>
+		<div>
+			<Header title='REACT'></Header>
+			<Nav></Nav>
+			<Article title='Welcome' body='Hello, Web'></Article>
 		</div>
 	)
 }
 
 export default App;
-// export default Main;
