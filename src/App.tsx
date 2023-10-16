@@ -1,42 +1,49 @@
-import React from 'react';
+import React, { ReactPropTypes } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { Context } from 'vm';
 
-function MyButton( { title }: { title: string } ) {
+interface header_props {
+  title: string;
+}
+
+function Header( props: header_props ) {
   return (
-    <button>{title}</button>
+      <header>
+        <h1>
+          <a href="/">{props.title}</a>
+        </h1>
+      </header>
+  )
+}
+
+function Nav() {
+  return (
+      <nav>
+        <ol>
+          <li><a href="/read/1">html</a></li>
+          <li><a href="/read/2">css</a></li>
+          <li><a href="/read/3">js</a></li>
+        </ol>
+      </nav>
+  )
+}
+
+function Article() {
+  return (
+      <article>
+        <h2>Welcome</h2>
+        Hello, WEB
+      </article>
   )
 }
 
 export default function MyApp() {
   return (
     <div>
-      <h1>Welcome to my app</h1>
-      <MyButton title="I'm a button"></MyButton>
-      </div>
+      <Header title="REACT"></Header>
+      <Nav></Nav>
+      <Article></Article>
+    </div>
   )
 }
-
-// function App() {
-//   return (
-//     <div className="App">
-//       <header className="App-header">
-//         <img src={logo} className="App-logo" alt="logo" />
-//         <p>
-//           Edit <code>src/App.tsx</code> and save to reload.
-//           test commit
-//         </p>
-//         <a
-//           className="App-link"
-//           href="https://reactjs.org"
-//           target="_blank"
-//           rel="noopener noreferrer"
-//         >
-//           Learn React
-//         </a>
-//       </header>
-//     </div>
-//   );
-// }
-
-// export default App;
