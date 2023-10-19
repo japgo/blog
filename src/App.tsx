@@ -131,7 +131,10 @@ export default function App() {
       const newTopic = { id:nextId, title: _title, body: _body };
       const newTopics = [ ...topics ];
       newTopics.push( newTopic );
-      setTopics( newTopics );
+      setTopics(newTopics);
+      setMode('READ');
+      setId(nextId);
+      setNextId(nextId + 1);
     }}></Create>
   }
 
