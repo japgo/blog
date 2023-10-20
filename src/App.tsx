@@ -113,6 +113,7 @@ export default function App() {
   ] );
 
   let content = null;
+  let contextControl = null;
   if( mode === 'WELCOME' ) {
     content = <Article title="Welcome" body="Hello, World!"></Article>
   }
@@ -125,6 +126,7 @@ export default function App() {
       }
     }
     content = <Article title={title} body={body}></Article>
+    contextControl = <li><a href={"/update/"+id}>Update</a></li>
   }
   else if( mode === 'CREATE' ) {
     content = <Create onCreate={(_title, _body) => {
@@ -147,13 +149,20 @@ export default function App() {
         setMode( 'READ' );
         setId( id );
       }}></Nav>
+
       { content }
-      <a href="/create" onClick={event=>{
-        event.preventDefault();
-        setMode( 'CREATE' );
-      }}>
-        Create
-      </a>
+
+      <ul>
+        <li>
+          <a href="/create" onClick={event => {
+            event.preventDefault();
+            setMode('CREATE');
+          }}>
+            Create
+          </a>
+        </li>
+        {contextControl}
+      </ul>
     </div>
-  )
+  );
 }
