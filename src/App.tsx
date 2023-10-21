@@ -27,6 +27,12 @@ interface create_props {
   onCreate( title:string, body:string ): any;
 }
 
+interface update_props {
+  title: string;
+  body: string;
+  onUpdate( title:string, body:string ): any;
+}
+
 function Header( props: header_props ) {
   return (
       <header>
@@ -101,6 +107,32 @@ function Create( props: create_props) {
   )
 }
 
+function Update( props: update_props ) {
+  return (
+    <article>
+      <h2>
+        Update
+      </h2>
+      <form onSubmit = { event => {
+        event.preventDefault();
+        const target = event.target as typeof event.target & {
+          title: { value: string };
+          body: { value: string };
+        }
+
+        const title = target.title;
+        const body = target.body;
+
+        props.onUpdate( title.value, body.value );
+      }}>
+        <p><input type="text" name="title" placeholder="title" value = { props.title }/></p>
+        <p><textarea name="body" placeholder="body" value = { props.body }/></p>
+        <p><input type="submit" value="Update" /></p>
+      </form>
+    </article>
+  );
+}
+
 export default function App() {
 
   const [mode, setMode] = useState( 'WELCOME' );
@@ -126,7 +158,10 @@ export default function App() {
       }
     }
     content = <Article title={title} body={body}></Article>
-    contextControl = <li><a href={"/update/"+id}>Update</a></li>
+    contextControl = <li><a href={"/update/"+id} onClick = { event => {
+      event.preventDefault();
+      setMode( 'UPDATE' );
+    }}>Update</a></li>
   }
   else if( mode === 'CREATE' ) {
     content = <Create onCreate={(_title, _body) => {
@@ -138,6 +173,18 @@ export default function App() {
       setId(nextId);
       setNextId(nextId + 1);
     }}></Create>
+  }
+  else if( mode === 'UPDATE' ) {
+    let title = "", body = "";
+    for( let i = 0; i < topics.length; i++ ) {
+      if( topics[ i ].id === id ) {
+        title = topics[ i ].title;
+        body = topics[ i ].body;
+      }
+    }
+    content = <Update title={title} body={body} onUpdate={ ( title, body ) => {
+
+    }}></Update>
   }
 
   return (
