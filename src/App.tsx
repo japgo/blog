@@ -207,7 +207,7 @@ export default function App() {
       const updatedTopic = { id: id, title: title, body: body };
       for( let i = 0; i < newTopics.length; i++ ) {
         if( newTopics[ i ].id === id ) {
-          newTopics[ i ] = updatedTopic;
+          newTopics[ i ]=updatedTopic;
           break;
         }
       }
