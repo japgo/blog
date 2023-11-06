@@ -41,6 +41,9 @@ interface update_props {
   onUpdate( title:string, body:string ): any;
 }
 
+
+
+
 function NavScrollExample() {
   return (
     <Navbar expand="lg" className="bg-body-tertiary">
@@ -53,6 +56,8 @@ function NavScrollExample() {
             style={{ maxHeight: '500px' }}
             navbarScroll
           >
+            {/*<NavLink to="/about">About</NavLink>
+            <NavLink to="/article">Article</NavLink>*/}
             <Nav.Link href="/about">About</Nav.Link>
             <Nav.Link href="/article">Article</Nav.Link>
             {/*<NavDropdown title="Article" id="navbarScrollingDropdown">
@@ -83,9 +88,6 @@ function NavScrollExample() {
     </Navbar>
   );
 }
-
-
-//export default NavDropdownExample;
 
 function Header( props: header_props ) {
   return (
@@ -194,6 +196,61 @@ function Update( props: update_props ) {
   );
 }
 
+
+
+function Home() {
+  return (
+    <div>
+      <h2>Home</h2>
+      Home...
+    </div>
+  )
+}
+function Topics() {
+  return (
+    <div>
+      <h2>Topics</h2>
+      Topics...
+    </div>
+  )
+}
+function Contact() {
+  return (
+    <div>
+      <h2>Contact</h2>
+      Contact...
+    </div>
+  )
+}
+
+function TopNavBar() {
+  return (
+    <div>
+      <Navbar expand="lg" className="bg-body-tertiary">
+          <Nav
+            className="me-auto my-2 my-lg-0"
+            style={{ maxHeight: '500px' }}
+            navbarScroll
+          >
+          <Nav.Link href="/blog">Home</Nav.Link>
+          <Nav.Link href="/blog/topics">Topics</Nav.Link>
+          <Nav.Link href="/blog/contact">Contact</Nav.Link>
+        </Nav>
+      </Navbar>
+
+
+
+      <Routes>
+        <Route path="/blog" element={<Home/>} />
+        <Route path="/blog/topics/*" element={<Topics />} />
+        <Route path="/blog/contact" element={<Contact />} />
+        <Route path="/blog/*" element={ 'Not Found' } />
+      </Routes>
+    </div>
+  )
+}
+
+
 export default function App() {
 
   const [ mode, setMode ] = useState( 'WELCOME' );
@@ -273,6 +330,7 @@ export default function App() {
   return (
     <div>
       <NavScrollExample />
+      <TopNavBar />
       <Header title="WEB" onChangeMode={() => {
         setMode( 'WELCOME' );
       }}></Header>
@@ -297,3 +355,25 @@ export default function App() {
     </div>
   );
 }
+
+
+{/*
+export default function App() {
+  return (
+    <div>
+      <h1>Hello React Router DOM</h1>
+      <ul>
+        <li><NavLink to = "/">Home</NavLink></li>
+        <li><NavLink to = "/topics">Topics</NavLink></li>
+        <li><NavLink to = "/contact">Contact</NavLink></li>
+      </ul>
+      <Routes>
+        <Route path = "/" element={<Home/>} />
+        {/*<Route path="/topics/*" element={<Topics />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/*" element={ 'Not Found' } />
+      </Routes>
+    </div>
+  )
+}
+*/}
