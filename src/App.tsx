@@ -232,9 +232,9 @@ function TopNavBar() {
             style={{ maxHeight: '500px' }}
             navbarScroll
           >
-          <Nav.Link href="/blog">Home</Nav.Link>
-          <Nav.Link href="/blog/topics">Topics</Nav.Link>
-          <Nav.Link href="/blog/contact">Contact</Nav.Link>
+          <Nav.Link href="/blog" >Home</Nav.Link>
+          <Nav.Link href="/blog/topics" >Topics</Nav.Link>
+          <Nav.Link href="/blog/contact" >Contact</Nav.Link>
         </Nav>
       </Navbar>
 
