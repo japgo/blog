@@ -41,6 +41,7 @@ interface update_props {
   onUpdate( title:string, body:string ): any;
 }
 
+export const HOME_URL = process.env.REACT_APP_HOME_URL;
 
 
 
@@ -232,19 +233,19 @@ function TopNavBar() {
             style={{ maxHeight: '500px' }}
             navbarScroll
           >
-          <Nav.Link href="/blog" >Home</Nav.Link>
-          <Nav.Link href="/blog/topics" >Topics</Nav.Link>
-          <Nav.Link href="/blog/contact" >Contact</Nav.Link>
+          <Nav.Link href={HOME_URL} >Home</Nav.Link>
+          <Nav.Link href={HOME_URL+"/topics"} >Topics</Nav.Link>
+          <Nav.Link href={HOME_URL+"/contact"} >Contact</Nav.Link>
         </Nav>
       </Navbar>
 
 
 
       <Routes>
-        <Route path="/blog" element={<Home/>} />
-        <Route path="/blog/topics/*" element={<Topics />} />
-        <Route path="/blog/contact" element={<Contact />} />
-        <Route path="/blog/*" element={ 'Not Found' } />
+        <Route path={HOME_URL} element={<Home/>} />
+        <Route path={HOME_URL+"/topics/*"} element={<Topics />} />
+        <Route path={HOME_URL+"/contact"} element={<Contact />} />
+        <Route path={HOME_URL+"/*"} element={ 'Not Found' } />
       </Routes>
     </div>
   )
