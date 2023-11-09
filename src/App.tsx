@@ -9,17 +9,16 @@ import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Navbar from 'react-bootstrap/Navbar';
-import { About } from './About'
-import { Article } from './Article'
+import About from './pages/About'
+import Article from './pages/Article'
+import Home from './pages/Home'
 
 
 function NavScroll() {
-const HOME_URL = process.env.REACT_APP_HOME_URL;
   return (
-    <>
-    <Navbar expand="lg" className="bg-body-tertiary">
+    <Navbar expand="lg" className="bg-body-tertiary .App">
       <Container fluid>
-        <Navbar.Brand href={HOME_URL}>Begon's Blog</Navbar.Brand>
+        <Navbar.Brand>Begon's Blog</Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
           <Nav
@@ -27,10 +26,9 @@ const HOME_URL = process.env.REACT_APP_HOME_URL;
             style={{ maxHeight: '500px' }}
             navbarScroll
           >
-            <Nav.Link href={HOME_URL+"/about"}>About</Nav.Link>
-            <Nav.Link href={HOME_URL+"/article"}>Article</Nav.Link>
-            <NavLink to={HOME_URL+"/about"}>About</NavLink>
-            <NavLink to={HOME_URL+"/article"}>Article</NavLink>
+            <Nav.Link><NavLink to='/'>Home</NavLink></Nav.Link>
+            <Nav.Link><NavLink to='/about'>About</NavLink></Nav.Link>
+            <Nav.Link><NavLink to='/article'>Article</NavLink></Nav.Link>
             {/*<NavDropdown title="Article" id="navbarScrollingDropdown">
               <NavDropdown.Item href="/article#spring">Spring</NavDropdown.Item>
               <NavDropdown.Item href="#action4">
@@ -54,20 +52,19 @@ const HOME_URL = process.env.REACT_APP_HOME_URL;
         </Navbar.Collapse>
       </Container>
     </Navbar>
-    </>
   );
 }
 
-
 export default function App() {
 
-const HOME_URL = process.env.REACT_APP_HOME_URL;
   return (
-    <Router>
+    <Router basename={process.env.PUBLIC_URL}>
       <NavScroll/>
       <Routes>
-        <Route path={HOME_URL+"/about"} element={<About/>} />
-        <Route path={HOME_URL+"/article"} element={<Article/>} />
+        <Route path='/' Component={Home} />
+        <Route path='/about' Component={About} />
+        <Route path='/article/*' Component={Article} />
+        <Route path='/*' element={'Not Found'} />
       </Routes>
     </Router>
   );
