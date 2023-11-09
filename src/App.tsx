@@ -10,8 +10,8 @@ import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Navbar from 'react-bootstrap/Navbar';
 import About from './pages/About'
-import Article from './pages/Article'
 import Home from './pages/Home'
+import { Article } from './pages/Article'
 
 
 function NavScroll() {
