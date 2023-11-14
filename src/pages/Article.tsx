@@ -1,12 +1,37 @@
-import React from 'react'
+import React from 'react';
 import { BrowserRouter, NavLink, Route, Routes, useParams } from 'react-router-dom';
-import './Article.css'
+import './Article.css';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm'
+
+import styled from 'styled-components';
+
+const MarkDownStyle = styled.div`
+	font-size: 1rem;
+	line-height: 2.5rem;
+`;
+
+const markdown = `
+# heading
+
+**BOLD**
+
+*abcd*
+
+\`\`\`js
+	code block
+\`\`\`
+
+> text
+`;
 
 var contents = [
-	{ id: "1", title: "react example", content: "text..." },
+	{ id: "1", title: "react example", content: markdown},
 	{ id: "2", title: "spring example", content: "spring ..." },
 	{ id: "3", title: "java example", content: "java..." },
 ]
+
+
 
 export function Article() {
 	return (
@@ -34,7 +59,12 @@ function Topic() {
 		return (
 			<div>
 				<h3>{selected_topic.title}</h3>
-				{selected_topic.content}
+				<MarkDownStyle>
+					<ReactMarkdown remarkPlugins={[remarkGfm]}>
+						{selected_topic.content}
+					</ReactMarkdown>
+				</MarkDownStyle>
+				
 			</div>
 		)
 }
@@ -65,70 +95,3 @@ function Topics() {
 			</div>
 		)
 }
-
-
-
-/*
-class Article extends React.Component {
-	
-	Topic = () => {
-		var params = useParams();
-		var topic_id = params.topic_id;
-		var selected_topic = {
-			title: 'Sorry',
-			content: 'Not Found'
-		};
-
-		for (var i = 0; i < contents.length; i++) {
-			if (contents[i].id === topic_id) {
-				selected_topic = contents[i];
-				break;
-			}
-		}
-
-		return (
-			<div>
-				<h3>{selected_topic.title}</h3>
-				{selected_topic.content}
-			</div>
-		)
-	}
-
-	Topics = () => {
-		var lis = [];
-		for (var i = 0; i < contents.length; i++) {
-			lis.push(
-				<li key={contents[i].id}><NavLink to={"/article/" + contents[i].id}>{contents[i].title}</NavLink></li>
-			)
-		}
-
-		return (
-			<div className="layout">
-				<div className="container">
-					<div className="list">
-						<h2>Topics</h2>
-						<ul>
-							{lis}
-						</ul>
-					</div>
-					<div className="content">
-						<Routes>
-							<Route path="/:topic_id" element={<this.Topic />} />
-						</Routes>
-					</div>
-				</div>
-			</div>
-		)
-	}
-
-	
-	render() {
-		return (
-			<div>
-				<this.Topics />
-			</div>
-		)
-	}
-}
-
-export default Article */
