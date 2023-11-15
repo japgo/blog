@@ -6,6 +6,7 @@ import remarkGfm from 'remark-gfm'
 import styled from 'styled-components';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { nord } from 'react-syntax-highlighter/dist/esm/styles/hljs';
+import styles from "../styles/components/MarkdownRenderer.module.css";
 
 
 const MarkDownStyle = styled.div`
@@ -22,6 +23,10 @@ const markdown = `
 
 \`\`\`js
 	code block
+	class User {
+		private string name;
+		private string password;
+	}
 \`\`\`
 
 > text
@@ -62,20 +67,25 @@ function Topic() {
 	return (
 		<div>
 			<h1>{selected_topic.title}</h1>
-			<MarkDownStyle>
+			<MarkDownStyle className={styles.MarkdownRenderer}>
 				<ReactMarkdown remarkPlugins={[remarkGfm]}
 					components={{
 						code({ node, className, children }) {
+							const match = /language-(\w+)/.exec(className || "");
+							const lang = match ? match[ 1 ] : "textile"
 							return (
-							  <SyntaxHighlighter
-								style={nord}
-								language="textile"
-								PreTag="div"
-							  >
-								{String(children).replace(/\n$/, "")}
-							  </SyntaxHighlighter>
+								<SyntaxHighlighter
+									style={nord}
+									language={lang}
+									PreTag="div"
+								>
+									{String(children)
+										.replace(/\n$/, "")
+										.replace(/\n&nbsp;\n/g, "")
+										.replace(/\n&nbsp\n/g, "")}
+								</SyntaxHighlighter>
 							);
-						  },
+						},
 						// 인용문 (>)
 						blockquote({ node, children }) {
 							return (
