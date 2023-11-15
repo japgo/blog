@@ -5,14 +5,8 @@ import remarkGfm from 'remark-gfm'
 
 import styled from 'styled-components';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
-import { nord } from 'react-syntax-highlighter/dist/esm/styles/hljs';
+import { agate, docco, nord } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 import styles from "../styles/components/MarkdownRenderer.module.css";
-
-
-const MarkDownStyle = styled.div`
-	font-size: 1rem;
-	line-height: 2.5rem;
-`;
 
 const markdown = `
 ## heading
@@ -22,11 +16,11 @@ const markdown = `
 *abcd*
 
 \`\`\`js
-	code block
-	class User {
-		private string name;
-		private string password;
-	}
+code block
+class User {
+	private string name;
+	private string password;
+}
 \`\`\`
 
 > text
@@ -67,22 +61,26 @@ function Topic() {
 	return (
 		<div>
 			<h1>{selected_topic.title}</h1>
-			<MarkDownStyle className={styles.MarkdownRenderer}>
+			{/*
+			<div className={styles.MarkdownRenderer}>
+			*/}
+			<div>
 				<ReactMarkdown remarkPlugins={[remarkGfm]}
 					components={{
 						code({ node, className, children }) {
-							const match = /language-(\w+)/.exec(className || "");
-							const lang = match ? match[ 1 ] : "textile"
 							return (
 								<SyntaxHighlighter
-									style={nord}
-									language={lang}
+									showLineNumbers
+									style={agate}
+									wrapLines={true}
+									language={"javascript"}
 									PreTag="div"
 								>
 									{String(children)
 										.replace(/\n$/, "")
-										.replace(/\n&nbsp;\n/g, "")
-										.replace(/\n&nbsp\n/g, "")}
+										// .replace(/\n&nbsp;\n/g, "")
+										// .replace(/\n&nbsp\n/g, "")
+										}
 								</SyntaxHighlighter>
 							);
 						},
@@ -104,7 +102,7 @@ function Topic() {
 				>
 					{selected_topic.content}
 				</ReactMarkdown>
-			</MarkDownStyle>
+			</div>
 
 		</div>
 	)
