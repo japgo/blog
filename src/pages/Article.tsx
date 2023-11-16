@@ -3,10 +3,8 @@ import './Article.css';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm'
 
-import styled from 'styled-components';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
-import { agate, docco, nord } from 'react-syntax-highlighter/dist/esm/styles/hljs';
-import styles from "../styles/components/MarkdownRenderer.module.css";
+import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 const markdown = `
 ## heading
@@ -71,9 +69,9 @@ function Topic() {
 							return (
 								<SyntaxHighlighter
 									showLineNumbers
-									style={agate}
+									style={vscDarkPlus}
 									wrapLines={true}
-									language={"javascript"}
+									language={"java"}
 									PreTag="div"
 								>
 									{String(children)
