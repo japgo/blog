@@ -11,7 +11,7 @@ import Form from 'react-bootstrap/Form';
 import Navbar from 'react-bootstrap/Navbar';
 import About from './pages/About'
 import Home from './pages/Home'
-import { Article } from './pages/Article'
+import { Article } from './pages/article/Article'
 
 
 function NavScroll() {
