@@ -13,7 +13,6 @@ import About from './pages/About'
 import Home from './pages/Home'
 import { Article } from './pages/article/Article'
 
-
 function NavScroll() {
   return (
     <Navbar expand="lg" className="bg-body-tertiary .App">
