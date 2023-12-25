@@ -1,5 +1,6 @@
 import { NavLink, useParams } from "react-router-dom";
 import { MarkdownRenderer } from "../../utils/MarkdownRenderer"
+import { get_list } from "../../utils/ArticleRepository"
 
 const markdown = `
 ## heading
@@ -20,7 +21,7 @@ class User {
 >> test2
 `;
 
-var contents = [
+var conten = [
 	{ id: "1", title: "react example", content: markdown },
 	{ id: "2", title: "spring example", content: "spring ..." },
 	{ id: "3", title: "java example", content: "java..." },
@@ -29,6 +30,7 @@ var contents = [
 
 export function ArticleList() {
 	var lis = [];
+    var contents = get_list(); 
 	for (var i = 0; i < contents.length; i++) {
 		lis.push(
 			<li key={contents[i].id}><NavLink to={"/article/" + contents[i].id}>{contents[i].title}</NavLink></li>
@@ -50,6 +52,7 @@ export function ArticleRenderer() {
 		content: 'Not Found'
 	};
 
+    var contents = get_list();
 	for (var i = 0; i < contents.length; i++) {
 		if (contents[i].id === topic_id) {
 			selected_topic = contents[i];
